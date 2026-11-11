@@ -71,10 +71,17 @@ public class WebServer {
                     fis.read(bytes);
                 }
 
+                String nameLower = file.getName().toLowerCase();
                 String contentType = "text/html; charset=UTF-8";
-                if (file.getName().endsWith(".svg")) contentType = "image/svg+xml; charset=UTF-8";
-                else if (file.getName().endsWith(".css")) contentType = "text/css; charset=UTF-8";
-                else if (file.getName().endsWith(".js")) contentType = "application/javascript; charset=UTF-8";
+                if (nameLower.endsWith(".svg")) contentType = "image/svg+xml; charset=UTF-8";
+                else if (nameLower.endsWith(".css")) contentType = "text/css; charset=UTF-8";
+                else if (nameLower.endsWith(".js")) contentType = "application/javascript; charset=UTF-8";
+                else if (nameLower.endsWith(".png")) contentType = "image/png";
+                else if (nameLower.endsWith(".jpg") || nameLower.endsWith(".jpeg")) contentType = "image/jpeg";
+                else if (nameLower.endsWith(".gif")) contentType = "image/gif";
+                else if (nameLower.endsWith(".webp")) contentType = "image/webp";
+                else if (nameLower.endsWith(".mp4")) contentType = "video/mp4";
+                else if (nameLower.endsWith(".webm")) contentType = "video/webm";
 
                 exchange.getResponseHeaders().set("Content-Type", contentType);
                 exchange.sendResponseHeaders(200, bytes.length);

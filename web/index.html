@@ -107,8 +107,8 @@
             margin: 20px auto 0;
             padding: 0 20px;
             display: flex;
-            gap: 8px;
-            overflow-x: auto;
+            flex-wrap: wrap;
+            gap: 4px;
             border-bottom: 1px solid var(--border);
         }
 
@@ -116,8 +116,8 @@
             background: transparent;
             border: none;
             color: var(--text-muted);
-            padding: 12px 18px;
-            font-size: 14px;
+            padding: 11px 13px;
+            font-size: 13.5px;
             font-weight: 600;
             cursor: pointer;
             border-bottom: 2px solid transparent;
@@ -437,6 +437,532 @@
             background: rgba(255, 255, 255, 0.02);
         }
 
+        /* ========================================================
+           РЕКЛАМНЫЙ БАННЕР В СТИЛЕ KINOGO / ИГРОВЫХ ПОРТАЛОВ
+           ======================================================== */
+        @keyframes kinogoShimmer {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes pulseCta {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.7); }
+            50% { transform: scale(1.04); box-shadow: 0 0 22px 4px rgba(251, 191, 36, 0.55); }
+        }
+
+        .kinogo-ad-wrapper {
+            max-width: 1100px;
+            margin: 16px auto 0;
+            padding: 0 20px;
+        }
+
+        .kinogo-banner {
+            position: relative;
+            border-radius: 12px;
+            padding: 16px 42px 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            flex-wrap: wrap;
+            overflow: hidden;
+            border: 2px solid #f59e0b;
+            background: linear-gradient(120deg, #450a0a, #7f1d1d, #9a3412, #450a0a);
+            background-size: 250% 250%;
+            animation: kinogoShimmer 7s ease infinite;
+            box-shadow: 0 8px 30px rgba(220, 38, 38, 0.3);
+        }
+
+        .kinogo-banner.theme-cyber {
+            border-color: #38bdf8;
+            background: linear-gradient(120deg, #0f172a, #1e1b4b, #312e81, #0c4a6e);
+            background-size: 250% 250%;
+            box-shadow: 0 8px 30px rgba(56, 189, 248, 0.25);
+        }
+
+        .kinogo-banner.theme-emerald {
+            border-color: #10b981;
+            background: linear-gradient(120deg, #064e3b, #065f46, #047857, #022c22);
+            background-size: 250% 250%;
+            box-shadow: 0 8px 30px rgba(16, 185, 129, 0.25);
+        }
+
+        .ad-tag {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.72);
+            color: #fbbf24;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.8px;
+            padding: 2px 9px;
+            border-bottom-right-radius: 8px;
+            text-transform: uppercase;
+            border-right: 1px solid rgba(251, 191, 36, 0.35);
+            border-bottom: 1px solid rgba(251, 191, 36, 0.35);
+        }
+
+        .ad-close-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: rgba(0, 0, 0, 0.55);
+            color: #e2e8f0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 14px;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+
+        .ad-close-btn:hover {
+            background: #ef4444;
+            color: #fff;
+        }
+
+        .ad-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex: 1;
+            min-width: 260px;
+            margin-top: 6px;
+        }
+
+        .ad-thumb {
+            width: 68px;
+            height: 68px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 2px solid rgba(251, 191, 36, 0.65);
+            flex-shrink: 0;
+            background: #0b0f19;
+        }
+
+        .ad-thumb-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            flex-shrink: 0;
+            box-shadow: 0 4px 14px rgba(245, 158, 11, 0.45);
+        }
+
+        .ad-text h3 {
+            font-size: 17px;
+            font-weight: 800;
+            color: #fef08a;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+            margin-bottom: 3px;
+        }
+
+        .ad-text p {
+            font-size: 13px;
+            color: #f8fafc;
+            opacity: 0.92;
+        }
+
+        .ad-cta-btn {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #ea580c 100%);
+            color: #111827;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            animation: pulseCta 2s infinite;
+            flex-shrink: 0;
+        }
+
+        .ad-cta-btn:hover {
+            filter: brightness(1.1);
+        }
+
+        .kinogo-feed-ad {
+            margin: 20px 0;
+        }
+
+        /* ========================================================
+           СТАТЬИ, ПОСТЫ, ФОТО И ВИДЕО
+           ======================================================== */
+        .filter-bar {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .filter-chips {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .filter-chip {
+            background: var(--bg-input);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 7px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .filter-chip:hover, .filter-chip.active {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: rgba(56, 189, 248, 0.12);
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .article-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .article-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--primary);
+        }
+
+        .article-media-wrap {
+            background: #090d16;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+        }
+
+        .article-photo {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+            display: block;
+            cursor: zoom-in;
+        }
+
+        .article-video {
+            width: 100%;
+            max-height: 240px;
+            display: block;
+            background: #000;
+        }
+
+        .article-iframe {
+            width: 100%;
+            height: 215px;
+            border: none;
+            display: block;
+        }
+
+        .article-body {
+            padding: 18px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            gap: 8px;
+        }
+
+        .article-cat-badge {
+            background: rgba(129, 140, 248, 0.15);
+            color: var(--accent);
+            border: 1px solid rgba(129, 140, 248, 0.35);
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 11px;
+        }
+
+        .article-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 10px;
+            line-height: 1.35;
+        }
+
+        .article-text {
+            font-size: 13.5px;
+            color: #cbd5e1;
+            line-height: 1.6;
+            margin-bottom: 16px;
+            white-space: pre-line;
+            flex: 1;
+        }
+
+        .article-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 12px;
+            border-top: 1px solid var(--border);
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .like-btn {
+            background: rgba(248, 113, 113, 0.08);
+            border: 1px solid rgba(248, 113, 113, 0.25);
+            color: #fda4af;
+            padding: 5px 12px;
+            border-radius: 16px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .like-btn:hover {
+            background: rgba(248, 113, 113, 0.2);
+            transform: scale(1.05);
+        }
+
+        /* ========================================================
+           ЛИЧНЫЙ КАБИНЕТ / АДМИН ПАНЕЛЬ
+           ======================================================== */
+        .admin-login-box {
+            max-width: 420px;
+            margin: 20px auto;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px;
+        }
+
+        .admin-header-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            background: linear-gradient(135deg, #131b2e, #1e293b);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 18px 22px;
+            margin-bottom: 20px;
+        }
+
+        .stat-mini-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+            margin-bottom: 22px;
+        }
+
+        .stat-mini-card {
+            background: var(--bg-input);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 14px;
+            text-align: center;
+        }
+
+        .stat-mini-num {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .stat-mini-lbl {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        textarea {
+            width: 100%;
+            background-color: var(--bg-input);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-main);
+            padding: 12px 14px;
+            font-size: 14px;
+            outline: none;
+            resize: vertical;
+            min-height: 110px;
+            transition: all 0.2s;
+        }
+
+        textarea:focus {
+            border-color: var(--border-focus);
+            box-shadow: 0 0 0 3px var(--primary-glow);
+        }
+
+        .upload-zone {
+            background: var(--bg-input);
+            border: 1px dashed #3b4f82;
+            border-radius: 10px;
+            padding: 14px;
+            margin-top: 8px;
+        }
+
+        .upload-row {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .file-label-btn {
+            background: #1e293b;
+            border: 1px solid var(--border-focus);
+            color: var(--primary);
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: 0.2s;
+            margin: 0;
+        }
+
+        .file-label-btn:hover {
+            background: rgba(56, 189, 248, 0.15);
+        }
+
+        .preview-media-box {
+            margin-top: 10px;
+            max-width: 280px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            display: none;
+        }
+
+        .preview-media-box img, .preview-media-box video {
+            width: 100%;
+            max-height: 170px;
+            display: block;
+            object-fit: cover;
+        }
+
+        .manage-post-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 14px;
+            padding: 14px;
+            background: var(--bg-input);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn-danger-sm {
+            background: rgba(248, 113, 113, 0.15);
+            border: 1px solid var(--danger);
+            color: var(--danger);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .btn-danger-sm:hover {
+            background: var(--danger);
+            color: #fff;
+        }
+
+        .btn-edit-sm {
+            background: rgba(56, 189, 248, 0.15);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .btn-edit-sm:hover {
+            background: var(--primary);
+            color: #0b0f19;
+        }
+
+        /* Модальные окна (промо и зум фото) */
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.82);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            padding: 20px;
+        }
+
+        .modal-backdrop.open {
+            display: flex;
+        }
+
+        .modal-card {
+            background: var(--bg-card);
+            border: 2px solid #f59e0b;
+            border-radius: 14px;
+            max-width: 480px;
+            width: 100%;
+            padding: 26px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 0 40px rgba(245, 158, 11, 0.35);
+        }
+
+        .promo-code-box {
+            background: #090d16;
+            border: 2px dashed #fbbf24;
+            color: #fbbf24;
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            padding: 12px;
+            border-radius: 10px;
+            margin: 16px 0;
+        }
+
         footer {
             border-top: 1px solid var(--border);
             padding: 20px;
@@ -473,10 +999,13 @@
                     <p>Локальная система оформления и расчёта модов (ТЗ 1-25)</p>
                 </div>
             </div>
-            <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
-                <a href="fifine-dashboard.html" style="background: linear-gradient(135deg, #06b6d4, #2563eb); color: #fff; text-decoration: none; padding: 8px 16px; border-radius: 8px; font-weight: 700; font-size: 13px; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(6,182,212,0.35); transition: 0.2s;">
-                    🎧 Дашборд FIFINE Headphones (Практическая 3)
+            <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                <a href="fifine-dashboard.html" style="background: linear-gradient(135deg, #06b6d4, #2563eb); color: #fff; text-decoration: none; padding: 8px 14px; border-radius: 8px; font-weight: 700; font-size: 13px; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 4px 12px rgba(6,182,212,0.35); transition: 0.2s;">
+                    🎧 Дашборд FIFINE
                 </a>
+                <button id="headerAccountBtn" onclick="switchTab('admin')" style="background: linear-gradient(135deg, #8b5cf6, #6366f1); color: #fff; border: none; padding: 8px 14px; border-radius: 8px; font-weight: 700; font-size: 13px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 4px 12px rgba(139,92,246,0.35);">
+                    👤 Личный кабинет
+                </button>
                 <div class="status-badge">
                     <span class="status-dot"></span>
                     <span>Локальный сервер активен • JDK 25</span>
@@ -485,12 +1014,19 @@
         </div>
     </header>
 
+    <!-- ======================================================== -->
+    <!-- ВЕРХНИЙ РЕКЛАМНЫЙ БАННЕР (В СТИЛЕ KINOGO) -->
+    <!-- ======================================================== -->
+    <div id="topAdWrapper" class="kinogo-ad-wrapper"></div>
+
     <nav class="nav-tabs">
         <button class="tab-btn active" onclick="switchTab('wizard')">🛒 Мастер заказа (ТЗ 21-25)</button>
-        <button class="tab-btn" onclick="switchTab('calculator')">💰 Калькулятор тарифов (ТЗ 4, 11, 18)</button>
-        <button class="tab-btn" onclick="switchTab('safety')">🛡️ Безопасность и ТЗ (ТЗ 10, 13, 14)</button>
-        <button class="tab-btn" onclick="switchTab('recommend')">💡 Рекомендатор (ТЗ 15, 20)</button>
-        <button class="tab-btn" onclick="switchTab('reference')">📋 Справочник ТЗ (1-25)</button>
+        <button class="tab-btn" onclick="switchTab('articles')">📰 Статьи и Посты <span id="articlesCountBadge" style="background: rgba(56,189,248,0.2); color: var(--primary); padding: 1px 7px; border-radius: 10px; font-size: 11px; margin-left: 4px;">0</span></button>
+        <button class="tab-btn" onclick="switchTab('calculator')">💰 Калькулятор тарифов</button>
+        <button class="tab-btn" onclick="switchTab('safety')">🛡️ Безопасность и ТЗ</button>
+        <button class="tab-btn" onclick="switchTab('recommend')">💡 Рекомендатор</button>
+        <button class="tab-btn" onclick="switchTab('admin')">👤 Админ-панель</button>
+        <button class="tab-btn" onclick="switchTab('reference')">📋 Справочник ТЗ</button>
     </nav>
 
     <main>
@@ -807,7 +1343,248 @@
                 </table>
             </div>
         </div>
+
+        <!-- ======================================================== -->
+        <!-- ВКЛАДКА: СТАТЬИ, ОБЗОРЫ, ФОТО И ВИДЕО МОДОВ -->
+        <!-- ======================================================== -->
+        <div id="tab-articles" class="tab-content">
+            <div class="card">
+                <div class="card-title">📰 Статьи, новости и видеообзоры модов</div>
+                <div class="filter-bar">
+                    <div class="filter-chips" id="articleFilters">
+                        <button class="filter-chip active" onclick="setArticleFilter('all', this)">Все посты</button>
+                        <button class="filter-chip" onclick="setArticleFilter('Обзор мода', this)">🎮 Обзоры модов</button>
+                        <button class="filter-chip" onclick="setArticleFilter('Гайд / Урок', this)">📘 Гайды и уроки</button>
+                        <button class="filter-chip" onclick="setArticleFilter('Новость студии', this)">⚡ Новости</button>
+                        <button class="filter-chip" onclick="setArticleFilter('Видео-релиз', this)">🎬 Видео</button>
+                    </div>
+                    <button class="btn-secondary" onclick="switchTab('admin')">✍️ Добавить пост в Админке</button>
+                </div>
+
+                <!-- Лента статей (между постами встраивается реклама в стиле Киного) -->
+                <div id="articlesFeedContainer"></div>
+            </div>
+        </div>
+
+        <!-- ======================================================== -->
+        <!-- ВКЛАДКА: ЛИЧНЫЙ КАБИНЕТ (АДМИН-ПАНЕЛЬ) -->
+        <!-- ======================================================== -->
+        <div id="tab-admin" class="tab-content">
+            <!-- ЭКРАН ВХОДА -->
+            <div id="adminLoginScreen" class="admin-login-box">
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <div style="font-size: 42px; margin-bottom: 8px;">🔐</div>
+                    <h2 style="font-size: 20px; color: var(--primary);">Личный кабинет / Админ-панель</h2>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 6px;">
+                        Войдите, чтобы публиковать статьи, загружать фото, видео и управлять рекламой
+                    </p>
+                </div>
+                <form onsubmit="handleAdminLogin(event)">
+                    <div class="form-group">
+                        <label>Логин администратора (ТЗ 5):</label>
+                        <input type="text" id="adminLoginInput" placeholder="admin" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Пароль:</label>
+                        <input type="password" id="adminPassInput" placeholder="123" required>
+                    </div>
+                    <div id="adminAuthError" style="display: none; background: rgba(248, 113, 113, 0.15); border: 1px solid var(--danger); color: var(--danger); padding: 10px; border-radius: 8px; font-size: 13px; margin-bottom: 14px;">
+                        Неверный логин или пароль!
+                    </div>
+                    <div class="badge-info" style="margin-bottom: 16px; display: block; text-align: center;">
+                        Подсказка для входа: логин <b>admin</b> • пароль <b>123</b>
+                    </div>
+                    <button type="submit" class="btn-primary">🔓 Войти в личный кабинет</button>
+                </form>
+            </div>
+
+            <!-- ПАНЕЛЬ ПОСЛЕ АВТОРИЗАЦИИ -->
+            <div id="adminDashboardScreen" style="display: none;">
+                <div class="admin-header-bar">
+                    <div>
+                        <h2 style="font-size: 19px; color: var(--primary);">👤 Личный кабинет администратора (admin)</h2>
+                        <p style="font-size: 13px; color: var(--text-muted);">Статус: <span style="color: var(--success); font-weight: 700;">АКТИВНЫЙ • VIP • ПОЛНЫЙ ДОСТУП</span></p>
+                    </div>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <button class="btn-secondary" onclick="switchTab('articles')">👁️ Открыть ленту статей</button>
+                        <button class="btn-danger-sm" onclick="handleAdminLogout()" style="padding: 9px 16px; font-size: 13px;">🚪 Выйти</button>
+                    </div>
+                </div>
+
+                <!-- Мини-статистика -->
+                <div class="stat-mini-grid">
+                    <div class="stat-mini-card">
+                        <div class="stat-mini-num" id="statTotalPosts">0</div>
+                        <div class="stat-mini-lbl">Всего статей</div>
+                    </div>
+                    <div class="stat-mini-card">
+                        <div class="stat-mini-num" id="statPhotoPosts">0</div>
+                        <div class="stat-mini-lbl">Постов с фото</div>
+                    </div>
+                    <div class="stat-mini-card">
+                        <div class="stat-mini-num" id="statVideoPosts">0</div>
+                        <div class="stat-mini-lbl">Постов с видео</div>
+                    </div>
+                    <div class="stat-mini-card">
+                        <div class="stat-mini-num" id="statAdStatus" style="color: var(--warning);">ВКЛ</div>
+                        <div class="stat-mini-lbl">Реклама (Киного)</div>
+                    </div>
+                </div>
+
+                <div class="grid-2">
+                    <!-- ФОРМА ДОБАВЛЕНИЯ / РЕДАКТИРОВАНИЯ СТАТЬИ -->
+                    <div class="card">
+                        <div class="card-title" id="postFormTitle">✍️ Добавить новую статью / пост</div>
+                        <form id="postEditorForm" onsubmit="saveArticle(event)">
+                            <input type="hidden" id="editPostId" value="">
+
+                            <div class="form-group">
+                                <label>Заголовок статьи:</label>
+                                <input type="text" id="postTitle" placeholder="Например: Обзор нового мода на драконов..." required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Категория поста:</label>
+                                <select id="postCategory">
+                                    <option value="Обзор мода">🎮 Обзор мода</option>
+                                    <option value="Новость студии">⚡ Новость студии</option>
+                                    <option value="Гайд / Урок">📘 Гайд / Урок</option>
+                                    <option value="Видео-релиз">🎬 Видео-релиз</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Текст статьи / поста:</label>
+                                <textarea id="postContent" placeholder="Напишите текст статьи, описание мода, инструкции по установке..." required></textarea>
+                            </div>
+
+                            <!-- ЗАГРУЗКА ФОТО -->
+                            <div class="form-group">
+                                <label>📷 Фотография к статье (ссылка или файл с компьютера):</label>
+                                <div class="upload-zone">
+                                    <input type="text" id="postPhotoUrl" placeholder="Вставьте URL картинки (https://...) или выберите файл ниже" oninput="previewPhotoUrl()">
+                                    <div class="upload-row" style="margin-top: 10px;">
+                                        <label class="file-label-btn">
+                                            📁 Загрузить фото с ПК
+                                            <input type="file" id="postPhotoFile" accept="image/*" style="display: none;" onchange="handlePhotoFileSelect(event)">
+                                        </label>
+                                        <button type="button" class="btn-secondary" style="padding: 6px 12px; font-size: 12px;" onclick="clearPhotoInput()">✖ Очистить фото</button>
+                                    </div>
+                                    <div id="photoPreviewBox" class="preview-media-box">
+                                        <img id="photoPreviewImg" src="" alt="Превью фото">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ЗАГРУЗКА ВИДЕО -->
+                            <div class="form-group">
+                                <label>🎬 Видео к статье (YouTube / прямая ссылка MP4 или файл с ПК):</label>
+                                <div class="upload-zone">
+                                    <input type="text" id="postVideoUrl" placeholder="Ссылка на YouTube / .mp4 или выберите видеофайл ниже" oninput="previewVideoUrl()">
+                                    <div class="upload-row" style="margin-top: 10px;">
+                                        <label class="file-label-btn">
+                                            🎥 Загрузить видео с ПК
+                                            <input type="file" id="postVideoFile" accept="video/*" style="display: none;" onchange="handleVideoFileSelect(event)">
+                                        </label>
+                                        <button type="button" class="btn-secondary" style="padding: 6px 12px; font-size: 12px;" onclick="clearVideoInput()">✖ Очистить видео</button>
+                                    </div>
+                                    <div id="videoPreviewBox" class="preview-media-box"></div>
+                                </div>
+                            </div>
+
+                            <div style="display: flex; gap: 10px;">
+                                <button type="submit" class="btn-primary" id="savePostBtn">🚀 Опубликовать статью</button>
+                                <button type="button" class="btn-secondary" id="cancelEditBtn" style="display: none;" onclick="resetPostForm()">Отмена</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- УПРАВЛЕНИЕ РЕКЛАМНЫМ ПОСТОМ И СПИСОК ПОСТОВ -->
+                    <div>
+                        <div class="card">
+                            <div class="card-title">📢 Настройка рекламного поста (как в Киного)</div>
+                            <form onsubmit="saveAdSettings(event)">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="adEnabledCheck" checked> Показывать рекламные баннеры на сайте
+                                </label>
+                                <div class="form-group">
+                                    <label>Оформление (стиль баннера):</label>
+                                    <select id="adThemeSelect">
+                                        <option value="kinogo">🔥 Киного Классик (Красно-золотой перелив)</option>
+                                        <option value="cyber">⚡ Киберпанк Неон (Сине-фиолетовый)</option>
+                                        <option value="emerald">🎰 Игровой Изумруд (Зелёно-золотой)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Заголовок рекламного поста:</label>
+                                    <input type="text" id="adTitleInput" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Описание / призыв:</label>
+                                    <input type="text" id="adDescInput" required>
+                                </div>
+                                <div class="grid-2">
+                                    <div class="form-group">
+                                        <label>Текст кнопки:</label>
+                                        <input type="text" id="adBtnInput" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Промокод при клике:</label>
+                                        <input type="text" id="adPromoInput" value="KINOGO2026">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Ссылка при переходе (если пусто — откроет промо-бонус):</label>
+                                    <input type="text" id="adLinkInput" placeholder="https://... (необязательно)">
+                                </div>
+                                <div class="form-group">
+                                    <label>Картинка рекламы (URL или файл, необязательно):</label>
+                                    <div class="upload-row">
+                                        <input type="text" id="adImageInput" placeholder="https://..." style="flex: 1;">
+                                        <label class="file-label-btn">
+                                            📁 Файл
+                                            <input type="file" accept="image/*" style="display: none;" onchange="handleAdImageSelect(event)">
+                                        </label>
+                                    </div>
+                                </div>
+                                <div style="display: flex; gap: 10px;">
+                                    <button type="submit" class="btn-primary" style="padding: 10px;">💾 Сохранить рекламу</button>
+                                    <button type="button" class="btn-secondary" onclick="resetAdSettings()">🔄 Сброс</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-title">🗂️ Ваши опубликованные статьи</div>
+                            <div id="adminPostsList"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ВСТРОЕННЫЙ РЕКЛАМНЫЙ БАННЕР СНИЗУ (КАК В KINOGO) -->
+        <div id="bottomAdWrapper" class="kinogo-feed-ad"></div>
     </main>
+
+    <!-- МОДАЛЬНОЕ ОКНО РЕКЛАМНОГО ПРЕДЛОЖЕНИЯ -->
+    <div id="promoModal" class="modal-backdrop" onclick="if(event.target===this) closePromoModal()">
+        <div class="modal-card">
+            <button class="ad-close-btn" onclick="closePromoModal()">✕</button>
+            <div style="font-size: 46px; margin-bottom: 6px;">🎁</div>
+            <h2 id="promoModalTitle" style="color: #fef08a; margin-bottom: 8px;">Специальный промо-бонус!</h2>
+            <p id="promoModalDesc" style="font-size: 14px; color: #e2e8f0;">
+                Активируйте ваш подарочный промокод прямо сейчас и получите дополнительную скидку при заказе модификации!
+            </p>
+            <div class="promo-code-box" id="promoModalCode">KINOGO2026</div>
+            <button class="btn-primary" onclick="applyPromoToWizard()">⚡ Забрать бонус и перейти к заказу</button>
+        </div>
+    </div>
+
+    <!-- ЛАЙТБОКС ДЛЯ ПРОСМОТРА ФОТО В ПОЛНОМ РАЗМЕРЕ -->
+    <div id="lightboxModal" class="modal-backdrop" onclick="this.classList.remove('open')">
+        <img id="lightboxImg" src="" alt="Просмотр фото" style="max-width: 92%; max-height: 90vh; border-radius: 12px; border: 2px solid var(--primary); box-shadow: 0 0 30px rgba(0,0,0,0.8);">
+    </div>
 
     <footer>
         <p>© 2026 ModCraft Studio. Проект разработан в соответствии с техническим заданием (ТЗ 1-25).</p>
@@ -1036,6 +1813,672 @@
             else if (g === '3' && e === '1') out.textContent = "Рекомендация: Кастомные скины оружия и удобный интерфейс прицела.";
             else out.textContent = "Рекомендация: Реалистичная баллистика, отдача оружия и умный ИИ противников.";
         }
+
+        // =========================================================================
+        // ХРАНИЛИЩЕ ДАННЫХ (IndexedDB + fallback localStorage для фото и видео)
+        // =========================================================================
+        const DB_NAME = "ModCraftStudioDB";
+        const DB_VERSION = 1;
+        let dbInstance = null;
+
+        // Встроенные SVG-обложки для стартовых демонстрационных статей (работают 100% оффлайн)
+        const DEMO_IMG_1 = "data:image/svg+xml;utf8," + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="800" height="420" viewBox="0 0 800 420"><defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1e1b4b"/><stop offset="50%" stop-color="#581c87"/><stop offset="100%" stop-color="#991b1b"/></linearGradient></defs><rect width="800" height="420" fill="url(#g1)"/><circle cx="650" cy="120" r="90" fill="#f59e0b" opacity="0.2"/><rect x="48" y="48" width="160" height="32" rx="16" fill="#f59e0b"/><text x="128" y="69" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="#0b0f19" text-anchor="middle">ОБЗОР МОДА 1.21</text><text x="48" y="185" font-family="Arial,sans-serif" font-size="42" font-weight="900" fill="#ffffff">SHADOW OF NETHER</text><text x="48" y="232" font-family="Arial,sans-serif" font-size="20" fill="#cbd5e1">Новые боссы, 12 видов оружия и данжи в Нижнем мире</text><rect x="48" y="280" width="220" height="44" rx="10" fill="#38bdf8"/><text x="158" y="308" font-family="Arial,sans-serif" font-size="16" font-weight="bold" fill="#0b0f19" text-anchor="middle">MODCRAFT STUDIO</text></svg>`);
+
+        const DEMO_IMG_2 = "data:image/svg+xml;utf8," + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="800" height="420" viewBox="0 0 800 420"><defs><linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0f172a"/><stop offset="60%" stop-color="#0e7490"/><stop offset="100%" stop-color="#065f46"/></linearGradient></defs><rect width="800" height="420" fill="url(#g2)"/><rect x="48" y="48" width="150" height="32" rx="16" fill="#34d399"/><text x="123" y="69" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="#0b0f19" text-anchor="middle">ГАЙД РАЗРАБОТКИ</text><text x="48" y="180" font-family="Arial,sans-serif" font-size="38" font-weight="900" fill="#ffffff">3D-МОДЕЛИ И СКРИПТЫ</text><text x="48" y="228" font-family="Arial,sans-serif" font-size="20" fill="#cbd5e1">Создание анимаций в Blockbench + привязка логики на Java</text><circle cx="670" cy="280" r="70" fill="#38bdf8" opacity="0.22"/><text x="670" y="295" font-family="Arial,sans-serif" font-size="56" text-anchor="middle">⚙️</text></svg>`);
+
+        const DEFAULT_ARTICLES = [
+            {
+                id: "demo-1",
+                createdAt: 2,
+                title: "Релиз RPG-мода «Shadow of Nether» для Minecraft 1.21 (Fabric / NeoForge)",
+                category: "Обзор мода",
+                content: "Представляем свежий проект нашей студии! Мод добавляет в Нижний мир 3 новых биома, 5 уникальных боссов с поэтапной боевой системой и 12 видов крафтового оружия с особыми способностями.\n\nПолностью оптимизирован под мультиплеер и стабильно держит 20 TPS даже при 50 игроках на сервере.",
+                photo: DEMO_IMG_1,
+                videoUrl: "",
+                videoBlob: null,
+                author: "admin",
+                date: "11.11.2026",
+                likes: 24
+            },
+            {
+                id: "demo-2",
+                createdAt: 1,
+                title: "Как мы создаём 3D-боссов и анимации: от концепта до кода Java",
+                category: "Гайд / Урок",
+                content: "Краткий разбор нашего рабочего процесса:\n1. Моделирование и риггинг скелета в Blockbench.\n2. Текстурирование в стиле Pixel-Art 32x32.\n3. Подключение скелетной анимации GeckoLib и написание ИИ поведения на Java.\n\nВы можете заказать разработку похожего мода в разделе «Мастер заказа» или добавить свои материалы в Личном кабинете!",
+                photo: DEMO_IMG_2,
+                videoUrl: "",
+                videoBlob: null,
+                author: "admin",
+                date: "10.11.2026",
+                likes: 17
+            }
+        ];
+
+        const DEFAULT_AD = {
+            enabled: true,
+            theme: "kinogo",
+            title: "🔥 ТОП-ПРЕДЛОЖЕНИЕ! БОНУС +15% К ЗАКАЗУ МОДА И БЫСТРЫЙ СТАРТ СЕРВЕРА",
+            desc: "Только сегодня! Забери секретный промокод как на лучших игровых порталах и получи приоритетную разработку без очереди!",
+            btnText: "ЗАБРАТЬ БОНУС ▶",
+            promoCode: "KINOGO2026",
+            link: "",
+            image: ""
+        };
+
+        let articlesList = [];
+        let adConfig = { ...DEFAULT_AD };
+        let currentArticleFilter = "all";
+        let topAdClosedSession = false;
+        let bottomAdClosedSession = false;
+        let tempPhotoData = "";
+        let tempVideoBlob = null;
+        let tempObjectUrls = [];
+
+        function openModDB() {
+            return new Promise((resolve, reject) => {
+                if (!window.indexedDB) return reject("No IndexedDB");
+                const req = indexedDB.open(DB_NAME, DB_VERSION);
+                req.onupgradeneeded = (e) => {
+                    const db = e.target.result;
+                    if (!db.objectStoreNames.contains("articles")) {
+                        db.createObjectStore("articles", { keyPath: "id" });
+                    }
+                    if (!db.objectStoreNames.contains("settings")) {
+                        db.createObjectStore("settings", { keyPath: "key" });
+                    }
+                };
+                req.onsuccess = (e) => {
+                    dbInstance = e.target.result;
+                    resolve(dbInstance);
+                };
+                req.onerror = () => reject("IDB error");
+            });
+        }
+
+        async function loadAllData() {
+            try {
+                await openModDB();
+                const tx = dbInstance.transaction(["articles", "settings"], "readonly");
+                const artStore = tx.objectStore("articles");
+                const setStore = tx.objectStore("settings");
+
+                const artReq = artStore.getAll();
+                const adReq = setStore.get("adConfig");
+                const initReq = setStore.get("initialized");
+
+                await new Promise((res) => { tx.oncomplete = res; });
+
+                if (!initReq.result) {
+                    articlesList = [...DEFAULT_ARTICLES];
+                    adConfig = { ...DEFAULT_AD };
+                    await saveAllArticlesToDB();
+                    await saveAdToDB();
+                    const txW = dbInstance.transaction(["settings"], "readwrite");
+                    txW.objectStore("settings").put({ key: "initialized", value: true });
+                } else {
+                    articlesList = artReq.result.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+                    if (adReq.result && adReq.result.value) {
+                        adConfig = adReq.result.value;
+                    }
+                }
+            } catch (err) {
+                // Запасной вариант через localStorage
+                const savedArt = localStorage.getItem("modcraft_articles");
+                const savedAd = localStorage.getItem("modcraft_ad");
+                articlesList = savedArt ? JSON.parse(savedArt) : [...DEFAULT_ARTICLES];
+                adConfig = savedAd ? JSON.parse(savedAd) : { ...DEFAULT_AD };
+            }
+
+            syncAdFormInputs();
+            renderAdBanners();
+            renderArticlesFeed();
+            renderAdminPostsList();
+            checkAdminSession();
+        }
+
+        async function saveAllArticlesToDB() {
+            try {
+                if (dbInstance) {
+                    const tx = dbInstance.transaction(["articles"], "readwrite");
+                    const store = tx.objectStore("articles");
+                    store.clear();
+                    articlesList.forEach(a => store.put(a));
+                    await new Promise((res) => { tx.oncomplete = res; });
+                }
+            } catch (e) {}
+            try {
+                // Сохраняем текстовые посты и фото в localStorage (видео-файлы остаются в IndexedDB)
+                const slim = articlesList.map(a => ({ ...a, videoBlob: null }));
+                localStorage.setItem("modcraft_articles", JSON.stringify(slim));
+            } catch (e) {}
+        }
+
+        async function saveAdToDB() {
+            try {
+                if (dbInstance) {
+                    const tx = dbInstance.transaction(["settings"], "readwrite");
+                    tx.objectStore("settings").put({ key: "adConfig", value: adConfig });
+                    await new Promise((res) => { tx.oncomplete = res; });
+                }
+            } catch (e) {}
+            try {
+                localStorage.setItem("modcraft_ad", JSON.stringify(adConfig));
+            } catch (e) {}
+        }
+
+        // =========================================================================
+        // РЕКЛАМНЫЙ БАННЕР В СТИЛЕ KINOGO
+        // =========================================================================
+        function buildBannerHtml(position) {
+            if (!adConfig.enabled) return "";
+            if (position === "top" && topAdClosedSession) return "";
+            if (position === "bottom" && bottomAdClosedSession) return "";
+
+            let themeClass = "";
+            if (adConfig.theme === "cyber") themeClass = "theme-cyber";
+            else if (adConfig.theme === "emerald") themeClass = "theme-emerald";
+
+            const thumbHtml = adConfig.image
+                ? `<img src="${escapeHtml(adConfig.image)}" class="ad-thumb" alt="Promo">`
+                : `<div class="ad-thumb-icon">🎰</div>`;
+
+            const closeAction = position === "top" ? "closeAdBanner('top')" : (position === "bottom" ? "closeAdBanner('bottom')" : "closeAdBanner('feed')");
+
+            return `
+                <div class="kinogo-banner ${themeClass}">
+                    <span class="ad-tag">РЕКЛАМА • ПРОМО</span>
+                    ${position !== 'feed' ? `<button class="ad-close-btn" title="Скрыть рекламу" onclick="${closeAction}">✕</button>` : ''}
+                    <div class="ad-left">
+                        ${thumbHtml}
+                        <div class="ad-text">
+                            <h3>${escapeHtml(adConfig.title)}</h3>
+                            <p>${escapeHtml(adConfig.desc)}</p>
+                        </div>
+                    </div>
+                    <button class="ad-cta-btn" onclick="handleAdClick()">${escapeHtml(adConfig.btnText)}</button>
+                </div>
+            `;
+        }
+
+        function renderAdBanners() {
+            const topEl = document.getElementById("topAdWrapper");
+            const bottomEl = document.getElementById("bottomAdWrapper");
+            if (topEl) {
+                const html = buildBannerHtml("top");
+                topEl.innerHTML = html;
+                topEl.style.display = html ? "block" : "none";
+            }
+            if (bottomEl) {
+                const html = buildBannerHtml("bottom");
+                bottomEl.innerHTML = html;
+                bottomEl.style.display = html ? "block" : "none";
+            }
+            const statAd = document.getElementById("statAdStatus");
+            if (statAd) {
+                statAd.textContent = adConfig.enabled ? "ВКЛ" : "ВЫКЛ";
+                statAd.style.color = adConfig.enabled ? "var(--warning)" : "var(--text-muted)";
+            }
+        }
+
+        function closeAdBanner(pos) {
+            if (pos === "top") topAdClosedSession = true;
+            if (pos === "bottom") bottomAdClosedSession = true;
+            renderAdBanners();
+        }
+
+        function handleAdClick() {
+            if (adConfig.link && adConfig.link.trim() !== "") {
+                window.open(adConfig.link.trim(), "_blank");
+            } else {
+                document.getElementById("promoModalTitle").textContent = adConfig.title;
+                document.getElementById("promoModalDesc").textContent = adConfig.desc;
+                document.getElementById("promoModalCode").textContent = adConfig.promoCode || "KINOGO2026";
+                document.getElementById("promoModal").classList.add("open");
+            }
+        }
+
+        function closePromoModal() {
+            document.getElementById("promoModal").classList.remove("open");
+        }
+
+        function applyPromoToWizard() {
+            closePromoModal();
+            switchTab("wizard");
+            const spentInput = document.getElementById("custSpent");
+            if (spentInput && parseFloat(spentInput.value) < 10000) {
+                spentInput.value = 10000; // Активируем VIP бонус
+            }
+            alert("Промокод «" + (adConfig.promoCode || "KINOGO2026") + "» активирован! Вам начислен бонусный VIP-статус для расчёта заказа.");
+        }
+
+        function syncAdFormInputs() {
+            const chk = document.getElementById("adEnabledCheck");
+            if (!chk) return;
+            chk.checked = !!adConfig.enabled;
+            document.getElementById("adThemeSelect").value = adConfig.theme || "kinogo";
+            document.getElementById("adTitleInput").value = adConfig.title || "";
+            document.getElementById("adDescInput").value = adConfig.desc || "";
+            document.getElementById("adBtnInput").value = adConfig.btnText || "";
+            document.getElementById("adPromoInput").value = adConfig.promoCode || "KINOGO2026";
+            document.getElementById("adLinkInput").value = adConfig.link || "";
+            document.getElementById("adImageInput").value = adConfig.image || "";
+        }
+
+        async function saveAdSettings(e) {
+            e.preventDefault();
+            adConfig = {
+                enabled: document.getElementById("adEnabledCheck").checked,
+                theme: document.getElementById("adThemeSelect").value,
+                title: document.getElementById("adTitleInput").value.trim(),
+                desc: document.getElementById("adDescInput").value.trim(),
+                btnText: document.getElementById("adBtnInput").value.trim(),
+                promoCode: document.getElementById("adPromoInput").value.trim() || "KINOGO2026",
+                link: document.getElementById("adLinkInput").value.trim(),
+                image: document.getElementById("adImageInput").value.trim()
+            };
+            topAdClosedSession = false;
+            bottomAdClosedSession = false;
+            await saveAdToDB();
+            renderAdBanners();
+            renderArticlesFeed();
+            alert("Настройки рекламного поста сохранены!");
+        }
+
+        async function resetAdSettings() {
+            adConfig = { ...DEFAULT_AD };
+            topAdClosedSession = false;
+            bottomAdClosedSession = false;
+            syncAdFormInputs();
+            await saveAdToDB();
+            renderAdBanners();
+            renderArticlesFeed();
+        }
+
+        function handleAdImageSelect(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                document.getElementById("adImageInput").value = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // =========================================================================
+        // СТАТЬИ, ПОСТЫ, ФОТО И ВИДЕО
+        // =========================================================================
+        function escapeHtml(str) {
+            if (!str) return "";
+            return String(str)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;");
+        }
+
+        function parseYouTubeEmbed(url) {
+            if (!url) return null;
+            const regExp = /(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+            const match = url.match(regExp);
+            return match ? `https://www.youtube.com/embed/${match[1]}` : null;
+        }
+
+        function setArticleFilter(cat, btn) {
+            currentArticleFilter = cat;
+            document.querySelectorAll("#articleFilters .filter-chip").forEach(b => b.classList.remove("active"));
+            if (btn) btn.classList.add("active");
+            renderArticlesFeed();
+        }
+
+        function renderArticlesFeed() {
+            tempObjectUrls.forEach(u => URL.revokeObjectURL(u));
+            tempObjectUrls = [];
+
+            const container = document.getElementById("articlesFeedContainer");
+            const badge = document.getElementById("articlesCountBadge");
+            if (badge) badge.textContent = articlesList.length;
+
+            const filtered = currentArticleFilter === "all"
+                ? articlesList
+                : articlesList.filter(a => a.category === currentArticleFilter);
+
+            if (!container) return;
+
+            if (filtered.length === 0) {
+                container.innerHTML = `<div style="text-align: center; padding: 40px; color: var(--text-muted);">
+                    <div style="font-size: 40px; margin-bottom: 10px;">📭</div>
+                    <p>В этой категории пока нет статей. Зайдите в <b>Админ-панель</b> и добавьте первый пост!</p>
+                </div>`;
+                return;
+            }
+
+            let html = '<div class="articles-grid">';
+            filtered.forEach((post, idx) => {
+                let mediaHtml = "";
+
+                if (post.photo) {
+                    mediaHtml += `<div class="article-media-wrap">
+                        <img src="${escapeHtml(post.photo)}" class="article-photo" alt="${escapeHtml(post.title)}" onclick="openLightbox(this.src)">
+                    </div>`;
+                }
+
+                if (post.videoBlob instanceof Blob) {
+                    const objUrl = URL.createObjectURL(post.videoBlob);
+                    tempObjectUrls.push(objUrl);
+                    mediaHtml += `<div class="article-media-wrap">
+                        <video class="article-video" controls src="${objUrl}"></video>
+                    </div>`;
+                } else if (post.videoUrl) {
+                    const yt = parseYouTubeEmbed(post.videoUrl);
+                    if (yt) {
+                        mediaHtml += `<div class="article-media-wrap">
+                            <iframe class="article-iframe" src="${yt}" allowfullscreen></iframe>
+                        </div>`;
+                    } else {
+                        mediaHtml += `<div class="article-media-wrap">
+                            <video class="article-video" controls src="${escapeHtml(post.videoUrl)}"></video>
+                        </div>`;
+                    }
+                }
+
+                html += `
+                    <article class="article-card">
+                        ${mediaHtml}
+                        <div class="article-body">
+                            <div class="article-meta">
+                                <span class="article-cat-badge">${escapeHtml(post.category)}</span>
+                                <span>📅 ${escapeHtml(post.date)}</span>
+                            </div>
+                            <h3 class="article-title">${escapeHtml(post.title)}</h3>
+                            <p class="article-text">${escapeHtml(post.content)}</p>
+                            <div class="article-footer">
+                                <span>✍️ Автор: <b>${escapeHtml(post.author || 'admin')}</b></span>
+                                <button class="like-btn" onclick="likeArticle('${post.id}')">❤️ ${post.likes || 0}</button>
+                            </div>
+                        </div>
+                    </article>
+                `;
+
+                // Вставляем рекламный пост в ленту после каждой 2-й карточки (как на Киного)
+                if ((idx === 1 || (filtered.length === 1 && idx === 0)) && adConfig.enabled) {
+                    html += `</div><div class="kinogo-feed-ad">${buildBannerHtml("feed")}</div><div class="articles-grid">`;
+                }
+            });
+            html += '</div>';
+            container.innerHTML = html;
+        }
+
+        async function likeArticle(id) {
+            const post = articlesList.find(p => p.id === id);
+            if (!post) return;
+            post.likes = (post.likes || 0) + 1;
+            await saveAllArticlesToDB();
+            renderArticlesFeed();
+        }
+
+        function openLightbox(src) {
+            document.getElementById("lightboxImg").src = src;
+            document.getElementById("lightboxModal").classList.add("open");
+        }
+
+        // =========================================================================
+        // ЛИЧНЫЙ КАБИНЕТ (АДМИН-ПАНЕЛЬ)
+        // =========================================================================
+        function checkAdminSession() {
+            const isLogged = sessionStorage.getItem("modcraft_admin_logged") === "true";
+            const loginScreen = document.getElementById("adminLoginScreen");
+            const dashScreen = document.getElementById("adminDashboardScreen");
+            const headerBtn = document.getElementById("headerAccountBtn");
+
+            if (isLogged) {
+                loginScreen.style.display = "none";
+                dashScreen.style.display = "block";
+                if (headerBtn) headerBtn.innerHTML = "👤 Кабинет (admin)";
+                updateAdminStats();
+            } else {
+                loginScreen.style.display = "block";
+                dashScreen.style.display = "none";
+                if (headerBtn) headerBtn.innerHTML = "👤 Личный кабинет";
+            }
+        }
+
+        function handleAdminLogin(e) {
+            e.preventDefault();
+            const login = document.getElementById("adminLoginInput").value.trim();
+            const pass = document.getElementById("adminPassInput").value.trim();
+            const errBox = document.getElementById("adminAuthError");
+
+            // ТЗ 5: Проверка логина и пароля (admin / 123)
+            if (login === "admin" && pass === "123") {
+                errBox.style.display = "none";
+                sessionStorage.setItem("modcraft_admin_logged", "true");
+                checkAdminSession();
+            } else {
+                errBox.style.display = "block";
+            }
+        }
+
+        function handleAdminLogout() {
+            sessionStorage.removeItem("modcraft_admin_logged");
+            document.getElementById("adminPassInput").value = "";
+            checkAdminSession();
+        }
+
+        function updateAdminStats() {
+            document.getElementById("statTotalPosts").textContent = articlesList.length;
+            document.getElementById("statPhotoPosts").textContent = articlesList.filter(a => !!a.photo).length;
+            document.getElementById("statVideoPosts").textContent = articlesList.filter(a => !!(a.videoUrl || a.videoBlob)).length;
+        }
+
+        function handlePhotoFileSelect(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                tempPhotoData = e.target.result;
+                document.getElementById("postPhotoUrl").value = "[Загружен файл: " + file.name + "]";
+                showPhotoPreview(tempPhotoData);
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function previewPhotoUrl() {
+            const val = document.getElementById("postPhotoUrl").value.trim();
+            if (val.startsWith("[Загружен файл:")) return;
+            tempPhotoData = val;
+            if (val) showPhotoPreview(val);
+            else document.getElementById("photoPreviewBox").style.display = "none";
+        }
+
+        function showPhotoPreview(src) {
+            const box = document.getElementById("photoPreviewBox");
+            const img = document.getElementById("photoPreviewImg");
+            img.src = src;
+            box.style.display = "block";
+        }
+
+        function clearPhotoInput() {
+            tempPhotoData = "";
+            document.getElementById("postPhotoUrl").value = "";
+            document.getElementById("postPhotoFile").value = "";
+            document.getElementById("photoPreviewBox").style.display = "none";
+        }
+
+        function handleVideoFileSelect(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            tempVideoBlob = file;
+            document.getElementById("postVideoUrl").value = "[Загружено видео: " + file.name + "]";
+            const url = URL.createObjectURL(file);
+            const box = document.getElementById("videoPreviewBox");
+            box.innerHTML = `<video controls src="${url}"></video>`;
+            box.style.display = "block";
+        }
+
+        function previewVideoUrl() {
+            const val = document.getElementById("postVideoUrl").value.trim();
+            if (val.startsWith("[Загружено видео:")) return;
+            tempVideoBlob = null;
+            const box = document.getElementById("videoPreviewBox");
+            if (!val) {
+                box.style.display = "none";
+                box.innerHTML = "";
+                return;
+            }
+            const yt = parseYouTubeEmbed(val);
+            box.innerHTML = yt
+                ? `<iframe style="width:100%;height:160px;border:none;" src="${yt}"></iframe>`
+                : `<video controls src="${escapeHtml(val)}"></video>`;
+            box.style.display = "block";
+        }
+
+        function clearVideoInput() {
+            tempVideoBlob = null;
+            document.getElementById("postVideoUrl").value = "";
+            document.getElementById("postVideoFile").value = "";
+            const box = document.getElementById("videoPreviewBox");
+            box.innerHTML = "";
+            box.style.display = "none";
+        }
+
+        async function saveArticle(e) {
+            e.preventDefault();
+            const editId = document.getElementById("editPostId").value;
+            const title = document.getElementById("postTitle").value.trim();
+            const category = document.getElementById("postCategory").value;
+            const content = document.getElementById("postContent").value.trim();
+            const urlField = document.getElementById("postVideoUrl").value.trim();
+            const videoUrl = urlField.startsWith("[Загружено видео:") ? "" : urlField;
+
+            if (!title || !content) {
+                alert("Заполните заголовок и текст статьи!");
+                return;
+            }
+
+            if (editId) {
+                const idx = articlesList.findIndex(p => p.id === editId);
+                if (idx !== -1) {
+                    articlesList[idx] = {
+                        ...articlesList[idx],
+                        title,
+                        category,
+                        content,
+                        photo: tempPhotoData,
+                        videoUrl,
+                        videoBlob: tempVideoBlob
+                    };
+                }
+            } else {
+                const now = new Date();
+                const dateStr = now.toLocaleDateString("ru-RU");
+                articlesList.unshift({
+                    id: "post-" + Date.now(),
+                    createdAt: Date.now(),
+                    title,
+                    category,
+                    content,
+                    photo: tempPhotoData,
+                    videoUrl,
+                    videoBlob: tempVideoBlob,
+                    author: "admin",
+                    date: dateStr,
+                    likes: 0
+                });
+            }
+
+            await saveAllArticlesToDB();
+            resetPostForm();
+            renderArticlesFeed();
+            renderAdminPostsList();
+            updateAdminStats();
+            alert(editId ? "Статья успешно обновлена!" : "Статья опубликована на сайте!");
+        }
+
+        function editArticle(id) {
+            const post = articlesList.find(p => p.id === id);
+            if (!post) return;
+
+            document.getElementById("editPostId").value = post.id;
+            document.getElementById("postTitle").value = post.title;
+            document.getElementById("postCategory").value = post.category;
+            document.getElementById("postContent").value = post.content;
+
+            tempPhotoData = post.photo || "";
+            if (tempPhotoData) {
+                document.getElementById("postPhotoUrl").value = tempPhotoData.startsWith("data:") ? "[Загруженное фото]" : tempPhotoData;
+                showPhotoPreview(tempPhotoData);
+            } else {
+                clearPhotoInput();
+            }
+
+            tempVideoBlob = post.videoBlob || null;
+            if (tempVideoBlob instanceof Blob) {
+                document.getElementById("postVideoUrl").value = "[Загруженное видео]";
+                const box = document.getElementById("videoPreviewBox");
+                box.innerHTML = `<video controls src="${URL.createObjectURL(tempVideoBlob)}"></video>`;
+                box.style.display = "block";
+            } else if (post.videoUrl) {
+                document.getElementById("postVideoUrl").value = post.videoUrl;
+                previewVideoUrl();
+            } else {
+                clearVideoInput();
+            }
+
+            document.getElementById("postFormTitle").textContent = "✏️ Редактирование статьи";
+            document.getElementById("savePostBtn").textContent = "💾 Сохранить изменения";
+            document.getElementById("cancelEditBtn").style.display = "inline-flex";
+            document.getElementById("postEditorForm").scrollIntoView({ behavior: "smooth" });
+        }
+
+        async function deleteArticle(id) {
+            if (!confirm("Удалить эту статью?")) return;
+            articlesList = articlesList.filter(p => p.id !== id);
+            await saveAllArticlesToDB();
+            renderArticlesFeed();
+            renderAdminPostsList();
+            updateAdminStats();
+        }
+
+        function resetPostForm() {
+            document.getElementById("editPostId").value = "";
+            document.getElementById("postEditorForm").reset();
+            clearPhotoInput();
+            clearVideoInput();
+            document.getElementById("postFormTitle").textContent = "✍️ Добавить новую статью / пост";
+            document.getElementById("savePostBtn").textContent = "🚀 Опубликовать статью";
+            document.getElementById("cancelEditBtn").style.display = "none";
+        }
+
+        function renderAdminPostsList() {
+            const listEl = document.getElementById("adminPostsList");
+            if (!listEl) return;
+
+            if (articlesList.length === 0) {
+                listEl.innerHTML = '<p style="font-size: 13px; color: var(--text-muted);">Статей пока нет.</p>';
+                return;
+            }
+
+            listEl.innerHTML = articlesList.map(p => `
+                <div class="manage-post-item">
+                    <div style="flex: 1; min-width: 180px;">
+                        <div style="font-weight: 700; font-size: 14px; margin-bottom: 3px;">${escapeHtml(p.title)}</div>
+                        <div style="font-size: 12px; color: var(--text-muted);">
+                            ${escapeHtml(p.category)} • ${escapeHtml(p.date)}
+                            ${p.photo ? ' • 📷 Фото' : ''}
+                            ${(p.videoUrl || p.videoBlob) ? ' • 🎥 Видео' : ''}
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 8px;">
+                        <button class="btn-edit-sm" onclick="editArticle('${p.id}')">✏️ Изменить</button>
+                        <button class="btn-danger-sm" onclick="deleteArticle('${p.id}')">🗑️ Удалить</button>
+                    </div>
+                </div>
+            `).join("");
+        }
+
+        // Инициализация данных при загрузке страницы
+        window.addEventListener("DOMContentLoaded", loadAllData);
     </script>
 </body>
 </html>
